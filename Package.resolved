@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CompoundFileReader",
+        "repositoryURL": "https://github.com/hughbe/CompoundFileReader",
+        "state": {
+          "branch": null,
+          "revision": "68d65eb68a0df6bb90261dbb0f6191f1609755f3",
+          "version": "1.0.10"
+        }
+      },
+      {
+        "package": "DataStream",
+        "repositoryURL": "https://github.com/hughbe/DataStream",
+        "state": {
+          "branch": null,
+          "revision": "e584f8516ac4ad38e6a062501c470fb44f2c9efd",
+          "version": "2.0.1"
+        }
+      },
+      {
+        "package": "BitField",
+        "repositoryURL": "https://github.com/hughbe/SwiftBitField",
+        "state": {
+          "branch": null,
+          "revision": "993f2e4ec4d4edfc598abd3e87cc813e937cffc1",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "WindowsDataTypes",
+        "repositoryURL": "https://github.com/hughbe/WindowsDataTypes",
+        "state": {
+          "branch": null,
+          "revision": "96bfa7b39b7e5a95121693908e5dbfb44bc55372",
+          "version": "1.0.9"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
