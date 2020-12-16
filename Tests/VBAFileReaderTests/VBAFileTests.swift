@@ -6,7 +6,7 @@ import CompoundFileReader
 final class VBAFileTests: XCTestCase {
     func testExample() throws {
         do {
-            let data = try getData(name: "hughbe/VBA File", fileExtension: "doc")
+            let data = try getData(name: "VBA File", fileExtension: "doc")
             let parentFile = try CompoundFile(data: data)
             var rootStorage = parentFile.rootStorage
             let file = try VBAFile(storage: rootStorage.children["Macros"]!)

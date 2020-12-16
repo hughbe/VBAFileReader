@@ -3,8 +3,5 @@ import XCTest
 import WindowsDataTypesTests
 
 var tests = [XCTestCaseEntry]()
-tests += OLENativeStream.allTests()
-tests += OLEPresentationStream.allTests()
-tests += OLEStream.allTests()
-tests += TOCEntry.allTests()
+tests += VBAFileTests.allTests()
 XCTMain(tests)
