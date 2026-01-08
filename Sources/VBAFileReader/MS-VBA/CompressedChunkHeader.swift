@@ -9,7 +9,7 @@ import DataStream
 
 /// [MS-OVBA] 2.4.1.1.5 CompressedChunkHeader
 /// A CompressedChunkHeader is the first record in a CompressedChunk (section 2.4.1.1.4). A CompressedChunkHeader specifies the size of the entire
-/// CompressedChunk and the data encoding format in CompressedChunk.CompressedData. CompressedChunkHeader information is used by the
+/// CompressedChunk and the data encoding format in CompressedChunk.CompressedData.  A CompressedChunkHeader is a two-byte record interpreted as an unsigned 16-bit integer in little-endian order. CompressedChunkHeader information is used by the
 /// Decompressing a CompressedChunk (section 2.4.1.3.2) and Compressing a DecompressedChunk (section 2.4.1.3.7) algorithms.
 public struct CompressedChunkHeader {
     public let compressedChunkSize: UInt16
