@@ -11,7 +11,7 @@ Add the following line to your project's SwiftPM dependencies:
 
 ```swift
 import CompoundFileReader
-import MsgReader
+import VbaFileReader
 
 let data = Data(contentsOfFile: "<path-to-file>.doc")!
 let parentFile = try CompoundFile(data: data)
