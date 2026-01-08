@@ -1,6 +1,6 @@
 # VBAFileReader
 
-Swift definitions for structures, enumerations and functions defined in [MS-OVBA](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-ovba/)
+Swift definitions for structures, enumerations and functions defined in [MS-OVBA](https://learn.microsoft.com/en-us/openspecs/office_file_formats/ms-ovba)
 
 ## Example Usage
 
