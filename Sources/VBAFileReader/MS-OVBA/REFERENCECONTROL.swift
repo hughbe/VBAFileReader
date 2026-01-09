@@ -11,7 +11,6 @@ import WindowsDataTypes
 /// [MS-OVBA] 2.3.4.2.2.3 REFERENCECONTROL Record
 /// Specifies a reference to a twiddled type library and its extended type library.
 public struct REFERENCECONTROL {
-    public let originalRecord: REFERENCEORIGINAL?
     public let id: Int16
     public let sizeTwiddled: UInt32
     public let sizeOfLibidTwiddled: UInt32
@@ -29,14 +28,6 @@ public struct REFERENCECONTROL {
     public let cookie: UInt32
     
     public init(dataStream: inout DataStream) throws {
-        /// OriginalRecord (variable): A REFERENCEORIGINAL Record (section 2.3.4.2.2.4) that specifies the Automation type library the
-        /// twiddled type library was generated from. This field is optional.
-        if try dataStream.peek(endianess: .littleEndian) as UInt16 == 0x0033 {
-            self.originalRecord = try REFERENCEORIGINAL(dataStream: &dataStream)
-        } else {
-            self.originalRecord = nil
-        }
-        
         /// Id (2 bytes): An unsigned integer that specifies the identifier for this record. MUST be 0x002F.
         self.id = try dataStream.read(endianess: .littleEndian)
         guard self.id == 0x002F else {

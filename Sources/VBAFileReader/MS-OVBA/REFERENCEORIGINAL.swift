@@ -8,12 +8,13 @@
 import DataStream
 
 /// [MS-OVBA] 2.3.4.2.2.4 REFERENCEORIGINAL Record
-/// Specifies the identifier of the Automation type library the containing REFERENCECONTROL’s (section 2.3.4.2.2.3) twiddled type library was
-/// generated from.
+/// Specifies the identifier of an Automation type library and a related REFERENCECONTROL (section 2.3.4.2.2.3).
+/// The contained REFERENCECONTROL's twiddled type library was generated from the Automation type library identifier specified.
 public struct REFERENCEORIGINAL {
     public let id: UInt16
     public let sizeOfLibidOriginal: UInt32
     public let libidOriginal: String
+    public let referenceRecord: REFERENCECONTROL
     
     public init(dataStream: inout DataStream) throws {
         /// Id (2 bytes): An unsigned integer that specifies the identifier for this record. MUST be 0x0033.
@@ -30,5 +31,9 @@ public struct REFERENCEORIGINAL {
         /// specified in PROJECTCODEPAGE (section 2.3.4.2.1.4). MUST NOT contain null characters. MUST conform to the ABNF grammar in
         /// LibidReference (section 2.1.1.8).
         self.libidOriginal = try dataStream.readString(count: Int(self.sizeOfLibidOriginal), encoding: .ascii)!
+        
+        /// ReferenceRecord (variable): A ReferenceRecord of type REFERENCECONTROL (section 2.3.4.2.2.3) that specifies the type library
+        /// generated from the Automation type library indicated by LibidOriginal.
+        self.referenceRecord = try REFERENCECONTROL(dataStream: &dataStream)
     }
 }
