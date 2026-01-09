@@ -11,6 +11,7 @@ import DataStream
 /// Specifies version-independent information for the VBA project.
 public struct PROJECTINFORMATION {
     public let sysKindRecord: PROJECTSYSKIND
+    public let compatVersion: PROJECTCOMPATVERSION?
     public let lcidRecord: PROJECTLCID
     public let lcidInvokeRecord: PROJECTLCIDINVOKE
     public let codePageRecord: PROJECTCODEPAGE
@@ -25,6 +26,15 @@ public struct PROJECTINFORMATION {
     public init(dataStream: inout DataStream) throws {
         /// SysKindRecord (10 bytes): A PROJECTSYSKIND Record (section 2.3.4.2.1.1).
         self.sysKindRecord = try PROJECTSYSKIND(dataStream: &dataStream)
+        
+        /// CompatVersionRecord (10 bytes): A PROJECTCOMPATVERSION Record (section 2.3.4.2.1.2). This
+        /// field is optional.
+        let peek: UInt16 = try dataStream.peek(endianess: .littleEndian)
+        if peek == 0x004A {
+            self.compatVersion = try PROJECTCOMPATVERSION(dataStream: &dataStream)
+        } else {
+            self.compatVersion = nil
+        }
         
         /// LcidRecord (10 bytes): A PROJECTLCID Record (section 2.3.4.2.1.2).
         self.lcidRecord = try PROJECTLCID(dataStream: &dataStream)
